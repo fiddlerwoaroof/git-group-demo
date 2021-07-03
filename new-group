@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+set -eu -o pipefail
+
+git checkout groups
+
+group_name="$1"
+shift
+
+tree_base="$(git rev-parse "$1^{tree}")"
+args=()
+
+for commit in "$@"; do
+  args=("${args[@]}" -p "$commit")
+done
+
+git reset --hard "$(git commit-tree -p HEAD "${args[@]}" -m "$group_name" "$tree_base")"
+
+git checkout main
