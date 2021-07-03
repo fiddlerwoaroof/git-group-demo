@@ -1,6 +1,23 @@
 The `new-group` tool in this repository takes a group name and a list of commits.  It checks out the `groups`
 branch and then adds a commit to it whose message is the group name and whose list of parents includes all of
-the specified commits. This produces a repository something like:
+the specified commits.
+
+The raw version of a group commit looks like this:
+
+```
+commit 10659afc2c13f9d2a7dbacdbdaeb641823e8318c
+tree 8a58ad71254d16b207486568a501175bd8a03f9e
+parent 657ea908f3dc942b6bd15db849964d56d628ed60
+parent ed2e033819fe92a501d3501cca5e82aa5ac91758
+parent c70b86c79d7968ca7d89ade3861bab638c53541b
+author Edward <Langley> 1625334314 -0700
+committer Edward <Langley> 1625334314 -0700
+
+    new-group tool
+```
+
+
+This produces a repository something like:
 
 ```
 % git log --format=oneline --graph --all
